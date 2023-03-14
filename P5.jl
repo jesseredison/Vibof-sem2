@@ -1,5 +1,5 @@
 #Task_1
-function euclid(m::T, n::T) where T # ну тут пипец уже хз даже что скахать
+function euclid(m::T, n::T) where T # алгоритм евклида
     # m, n - заданные целые
     a, b = m, n
     u_a, v_a = T(1), T(0)
@@ -15,7 +15,7 @@ function euclid(m::T, n::T) where T # ну тут пипец уже хз даж�
 end
 
 #Task_2 (P7)
-function ext_euclid_inv_res(m::T, n::T) where T #  и тут хз
+function ext_euclid_inv_res(m::T, n::T) where T #  тут халгоритм евклида только вывод переворачивается
     #ax + by = 1    
     a, b = m, n
     u_a, v_a = T(1), T(0)
@@ -33,7 +33,7 @@ function ext_euclid_inv_res(m::T, n::T) where T #  и тут хз
 end
 
 #Task_3
-function bisect(f::Function, a, b, ε) # и здесь тоже хз
+function bisect(f::Function, a, b, ε) # тут хз
     y_a=f(a)
     while b-a > ε
         x_m = (a+b)/2
