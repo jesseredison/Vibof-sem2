@@ -1,4 +1,4 @@
-function comb_sort!(A)
+function comb_sort!(A) # сортировка комбинациями
     g = length(A)
     sorted = false
     sm=0
@@ -21,7 +21,7 @@ end
 
 f(x) = x
 
-function bubblesort!(a, by::Function = f)
+function bubblesort!(a, by::Function = f) # сортировка пузырьком
     n = length(a)
     for k in 1:n-1
         is_sorted = true
