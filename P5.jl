@@ -1,5 +1,5 @@
 #Task_1
-function euclid(m::T, n::T) where T 
+function euclid(m::T, n::T) where T # ну тут пипец уже хз даже что скахать
     # m, n - заданные целые
     a, b = m, n
     u_a, v_a = T(1), T(0)
@@ -15,7 +15,7 @@ function euclid(m::T, n::T) where T
 end
 
 #Task_2 (P7)
-function ext_euclid_inv_res(m::T, n::T) where T
+function ext_euclid_inv_res(m::T, n::T) where T #  и тут хз
     #ax + by = 1    
     a, b = m, n
     u_a, v_a = T(1), T(0)
@@ -33,7 +33,7 @@ function ext_euclid_inv_res(m::T, n::T) where T
 end
 
 #Task_3
-function bisect(f::Function, a, b, ε)
+function bisect(f::Function, a, b, ε) # и здесь тоже хз
     y_a=f(a)
     while b-a > ε
         x_m = (a+b)/2
@@ -51,7 +51,7 @@ function bisect(f::Function, a, b, ε)
 end
 
 #Task_4
-function isprime_(n::T)::Bool where T <: Integer
+function isprime_(n::T)::Bool where T <: Integer # проверка явлется ли число простым
     for i in 2:round(T, sqrt(n))
         if n % i == 0
             return false
@@ -61,7 +61,7 @@ function isprime_(n::T)::Bool where T <: Integer
 end
 
 #Task_5
-function eratosphen(n::Integer)::BitVector
+function eratosphen(n::Integer)::BitVector # алгоритм эрастофена
     is_prime = ones(Bool, n) 
     is_prime[1] = false # 1 — не является простым числом
     for i in 2:round(Int, sqrt(n))
@@ -75,7 +75,7 @@ function eratosphen(n::Integer)::BitVector
 end
 
 #Task_6
-function dividers(a)
+function dividers(a) # все делители числа
     x = a
     c = 0
     d = []
