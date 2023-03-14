@@ -1,4 +1,4 @@
-function findall_(f::Function, A)
+function findall_(f::Function, A) # Фнкция которая ищет элементы массива по какому-то условию f()
     s = []
     for i in 1:length(A)
         if f(A[i])
@@ -8,7 +8,7 @@ function findall_(f::Function, A)
     return s
 end
 
-function findfirst_(A, a)
+function findfirst_(A, a) # Функция которая находит первый элемент массива раынй a 
     for i in 1:length(A)
         if A[i] == a
             return i 
@@ -17,7 +17,7 @@ function findfirst_(A, a)
     return nothing
 end
 
-function findlast_(A, a)
+function findlast_(A, a) # Функция которая находи последний встретившийся элемент массива равный a
     ix = nothing
     for i in 1:length(A)
         if A[i] == a
@@ -27,7 +27,7 @@ function findlast_(A, a)
     return ix
 end
 
-function filter_(f, A)
+function filter_(f, A) # Функция фильтрации массива по условию f()
     s = []
     for i in 1:length(A)
         if f(A[i]) != false
@@ -38,7 +38,7 @@ function filter_(f, A)
 end
 
 
-function issorted(A)
+function issorted(A) # Проверка отсортирован ли массив
     for i in 1:length(A)-1
         if A[i+1]<A[i]
             return false
@@ -51,7 +51,7 @@ function f(x)
     return x
 end
 
-function bubblesort!(a, by::Function = f(x))
+function bubblesort!(a, by::Function = f(x)) # Основная функция сортировки пузырьком нрубо говоря самая главная
     n = length(a)
     for k in 1:n-1
         is_sorted = true
@@ -69,7 +69,7 @@ function bubblesort!(a, by::Function = f(x))
 end
 bubblesort(a) = bubblesort!(deepcopy(a))
 
-function bubblesortperm!(a, by::Function = f(x))
+function bubblesortperm!(a, by::Function = f(x)) # также функция сортировки только поменьше
     n = length(a)
     indexes = collect(1:n)
     for k in 1:n-1
@@ -90,7 +90,7 @@ end
 bubblesortperm(a) = bubblesortperm!(deepcopy(a))
 
 
-function slice(A::Matrix,I::Vector{Int},J::Vector{Int})
+function slice(A::Matrix,I::Vector{Int},J::Vector{Int}) # Вот это хз что-то с матрицами
     B=Matrix{eltype(A)}(undef,length(I),length(J))
     for i in I
         for j in J
@@ -100,7 +100,7 @@ function slice(A::Matrix,I::Vector{Int},J::Vector{Int})
     return B
 end
 
-function col_bubblesort!(A::AbstractMatrix)
+function col_bubblesort!(A::AbstractMatrix) # Сортировка пузырьком матрицы по столбцам
     for j in size(A,2)
         bubblesort!(@view A[:,j])
     end
