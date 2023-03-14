@@ -1,5 +1,5 @@
 #Task_1
-function quick_sort!(A)
+function quick_sort!(A) # быстрая сортировка
     if isempty(A)
         return A
     end
@@ -10,7 +10,7 @@ function quick_sort!(A)
     return A
 end
 
-function part_sort!(A, b)
+function part_sort!(A, b) # сортировка по частям
     N = length(A)
     K, L, M = 0, 0, N
     @inbounds while L < M
@@ -28,7 +28,7 @@ function part_sort!(A, b)
 end
 
 #Task_2
-function order_statistics!(A, i)
+function order_statistics!(A, i) # это хз что-то по порядку выставляет наверное
     N = length(A)
     b = A[rand(1:N)]
     K, M = part_sort!(A, b)
@@ -43,7 +43,7 @@ end
 order_statistics(A, i) = order_statistics!(copy(A), i)
 
 #Task_3
-function med(A)
+function med(A) # нахождение медиавны в массиве
     N = length(A)
     if mod(N, 2) == 0
         return (order_statistics!(A, N ÷  2) + order_statistics!(A, N ÷ 2 + 1))/2
@@ -53,7 +53,7 @@ function med(A)
 end
 
 #Task_4
-function minimums(array, k)
+function minimums(array, k)# все числа меньше какого-то
     N = length(array)
     k_minimums = sort(array[1:k])
     i = k
@@ -67,7 +67,7 @@ function minimums(array, k)
     return k_minimums
 end         
 
-function insert_end!(array)::Nothing
+function insert_end!(array)::Nothing  # вставка в конец
     j = length(array)
     while j>1 && array[j-1] > array[j]
         array[j-1], array[j] = array[j], array[j-1]
