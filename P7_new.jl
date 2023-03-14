@@ -24,7 +24,7 @@ function Base. -(a::Residue_{T}, b::Residue_{T}) where T
     throw(Exception)
 end
 
-function ext_euclid(m::T, n::T) where T
+function ext_euclid(m::T, n::T) where T # алгоритм евлида
     #ax + by = 1    
     a, b = m, n
     u_a, v_a = 1, 0
@@ -41,7 +41,7 @@ function ext_euclid(m::T, n::T) where T
     return u_a
 end
 
-function Base.inv(a::Residue_{T})::Union{Nothing, Residue_{T}} where T
+function Base.inv(a::Residue_{T})::Union{Nothing, Residue_{T}} where T # инверсия похоже что алгоритма евклида
     if gcd(a.value, M)!=1
         return Nothing
     end
@@ -90,7 +90,7 @@ end
 deg(p::Polynomial) = length(p.coeff) - 1
 
 
-function remove_zeros(p::Polynomial{T}) where T
+function remove_zeros(p::Polynomial{T}) where T # убирание всех нудей в масссиве
     coeff = copy(p.coeff)
     i, n = lastindex(coeff), 0
     while i > 0 && coeff[i] == 0
