@@ -90,7 +90,7 @@ end
 bubblesortperm(a) = bubblesortperm!(deepcopy(a))
 
 
-function slice(A::Matrix,I::Vector{Int},J::Vector{Int}) # Вот это хз что-то с матрицами
+function slice(A::Matrix,I::Vector{Int},J::Vector{Int}) # функция с матрицами
     B=Matrix{eltype(A)}(undef,length(I),length(J))
     for i in I
         for j in J
