@@ -1,5 +1,5 @@
 #Task_1
-function issorted_(a)
+function issorted_(a) # Проверка отсортирован ли массив
     prev = a[1]
     for i in a[2:end]
         if i < prev
@@ -10,7 +10,7 @@ function issorted_(a)
     return true
 end
 
-function binary_search(a, A, b, e)
+function binary_search(a, A, b, e) # функция бинарного поиска через рекурсию
     if b > e
         return false
     end
@@ -26,7 +26,7 @@ function binary_search(a, A, b, e)
     end
 end
 
-function length_(A)
+function length_(A) # длина массива
     len = 0
     for _ in A
         len += 1
@@ -34,7 +34,7 @@ function length_(A)
     return len
 end
 
-function sum_(A::AbstractVector{T}) where T
+function sum_(A::AbstractVector{T}) where T # сумма массива
     s = T(0)
     for a in A
         s += a
@@ -43,7 +43,7 @@ function sum_(A::AbstractVector{T}) where T
 end
 
 
-function prod_(A)
+function prod_(A) # это хз
     p = eltype(A)(1)
     for a in A
         p *= a
@@ -51,7 +51,7 @@ function prod_(A)
     return p
 end
 
-function maximum_(A)
+function maximum_(A) # максимальный элемент массива
     M = typemin(eltype(A)) # m = -Inf
     for a in A
         M = max(M,a)
@@ -59,7 +59,7 @@ function maximum_(A)
     return M
 end
 
-function minimum_(A)
+function minimum_(A) # минимальный элемент
     m = typemin(eltype(A)) # m = -Inf
     for a in A
         m = min(m,a)
@@ -67,7 +67,7 @@ function minimum_(A)
     return m
 end
 
-function imax_(A)
+function imax_(A) # поиск максимума опять
     @assert !isempty(A)
     imax = firstindex(A)
     for k in eachindex(A)
@@ -78,7 +78,7 @@ function imax_(A)
     return imax
 end
 
-function insertsort!(A)
+function insertsort!(A) # сортировка вставками
     n=length(A)
     for k in eachindex(A) #2:n
         # часть массива A[1:k-1] уже отсортирована
@@ -93,7 +93,7 @@ op_insert!(A,k) =
         k -= 1
     end
 
-function evalpoly_(x,A)
+function evalpoly_(x,A) # это хз
     Q = first(A) # коэффициенты записаны по убыванию степени
     for a in @view A[2:end]
         Q=Q*x+a
@@ -101,7 +101,7 @@ function evalpoly_(x,A)
     return Q
 end
 
-function mean_(A::AbstractVector{T}) where T
+function mean_(A::AbstractVector{T}) where T # поиск среднего арифметического в масииве
     s = T(0)
     i = 0
     for a in A
@@ -111,7 +111,7 @@ function mean_(A::AbstractVector{T}) where T
     return s / i
 end
 
-function count_maximum_(A)
+function count_maximum_(A) # кол-во максимальных
     M = typemin(eltype(A)) # m = -Inf
     c = 0
     for a in A
@@ -126,7 +126,7 @@ function count_maximum_(A)
     return (c, M)
 end
 
-function _isperm(p)
+function _isperm(p) # проверка модно ли переставить элементы
     n = length(p)
     used = falses(n) # возвращает нулевой BitVector длины n
     for i in p
@@ -140,7 +140,7 @@ function _isperm(p)
     return true
 end
 
-function _invpermute!(A, p)
+function _invpermute!(A, p) # это хз
     for i in p
         if i > 0
             A[i], A[p[i]] = A[p[i]], A[i]
@@ -153,7 +153,7 @@ function _invpermute!(A, p)
     return A   
 end
 
-function _permute!(A, p) 
+function _permute!(A, p) # тоже хз
     for i in eachindex(p)
         if p[i] < 0
             continue
@@ -176,20 +176,20 @@ function _permute!(A, p)
 end
 
 #Task_2
-function _reverse!(a)
+function _reverse!(a) # переворачивание массива
     for i in 1:length(a) ÷ 2
         a[i], a[end-i+1] = a[end-i+1], a[i] 
     end
 end
 #Task_3
-function shift_right!(a)
+function shift_right!(a) # это хз
     resize!(a, length(a)+1)
     a[begin+1:end] = @view(a[begin:end-1])
     a[begin] = 0
 end
 
 #Task_4
-function circshift_right!(a)
+function circshift_right!(a) # это хз
     buf = a[end]
     for i in lastindex(a):-1:firstindex(a)-1
         a[i] = a[i-1]
@@ -197,7 +197,7 @@ function circshift_right!(a)
     a[begin] = buf
 end
 
-function circshift_left!(a)
+function circshift_left!(a) # это хз
     buf = a[begin]
     for i in firstindex(a):lastindex(a)-1
         a[i] = a[i+1]
@@ -206,7 +206,7 @@ function circshift_left!(a)
 end
 
 #Task_5
-function _circshift!(a, k)
+function _circshift!(a, k) # это хз
     if k > 0
         reverse!(@view(a[1:k]))
         reverse!(@view(a[k+1:end]))
