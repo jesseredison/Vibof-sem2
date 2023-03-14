@@ -1,5 +1,5 @@
 #Task_1
-function newton(r::Function, x; epsilon = 1e-8, max_num_iter = 20)
+function newton(r::Function, x; epsilon = 1e-8, max_num_iter = 20) # наверное алгоритм ньютона
     num_iter = 0
     r_x = r(x)
     while num_iter < max_num_iter && abs(r_x) > epsilon
@@ -22,7 +22,7 @@ end
 newton(x -> (cos(x)-x)/(sin(x)+1), 0.5)
 
 #Task_3
-function polyval(P,x)
+function polyval(P,x)  # это хз
     dQ = 0
     Q = P[1]
     for i in 2:length(P)        
@@ -39,7 +39,7 @@ function r(P, x) #P - внешняя переменная, содержащая 
 end
 
 
-function complexroot(P::Polynomial, x)
+function complexroot(P::Polynomial, x) # корень комплексного числа
     num_iter = 0
     r_x = r(P, x)
     while num_iter < max_num_iter && abs(r_x) > epsilon
